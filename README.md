@@ -13,15 +13,16 @@ Team Name: Brogrammers
 
 Team Members:
 
-Shrawan Sai (Team Leader)
-Samarth Nair @Aressam6699
-Aryan Jain @LucielM1
-Aditi Aravind @aditiaravind
-Demo Link: https://mish-forum.herokuapp.com/
+Shrawan Sai @ShrawanSai <b>(Team Leader)</b> <br>
+Samarth Nair @Aressam6699 <br>
+Aryan Jain @LucielM1 <br>
+Aditi Aravind @aditiaravind <br>
 
-Repository Link(s): https://github.com/ShrawanSai
+<b>Demo Link:</b> https://mish-forum.herokuapp.com/
 
-Presentation Link: https://drive.google.com/drive/folders/1Ocx1EOAXGlQyT6qm9expqONEUK4UCItn?usp=sharing
+<b>Repository Link(s):</b> https://github.com/ShrawanSai
+
+<b>Presentation Link:</b> https://drive.google.com/drive/folders/1Ocx1EOAXGlQyT6qm9expqONEUK4UCItn?usp=sharing
 
 Deep Tech - Problem Statement - 3: NA
 
@@ -30,7 +31,7 @@ Deep Tech - Problem Statement - 2: NA
 Azure Services Used- Bing Video Services
 Additionally, the fully integrated project is to be hosted on Azure Services
 
-# Our Product : Eruditio
+<h1> Our Product : Eruditio</h1>
 Our Idea is catered towards education technologies. As students ourselves we aim to tackle some problems that we face first-hand and provide novel solutions for the same.
 The course material that is presented to students worldwide, specially to students in higher classes or colleges, is often non indulging and monotonous. It has hardly any interactability and often does not drive the student towards further reading on the topics.
 
