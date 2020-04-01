@@ -1,0 +1,5 @@
+Flask
+Flask-RESTful
+bert-extractive-summarizer==0.4.0
+uwsgi
+gunicorn==19.9.0

@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+  color:#edf2f7;
+  font-family: verdana;
+  font-size: 300%;
+  text-align: center;	
+}
+
+h2 {
+  color: #edf2f7;
+  font-family: verdana;
+  font-size: 200%;
+  text-align: center;
+}
+p  {
+  color: black;
+  font-family: courier;
+  font-size: 100%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 150px;
+  margin-left: 80px;
+  text-align: center;
+}
+
+#p01 {
+  color: #edf2f7;
+  background-color: yellow;
+  font-family: courier;
+  font-size: 100%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-right: 150px;
+  margin-left: 80px;
+  text-align: center;
+}
+
+body {
+  background-color: #0275D8;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+table 
+{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 60%;
+  text-align:center;
+  align:center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th {
+  text-align: center;'
+  border: 1px solid black;
+  background-color: lightblue;
+  color: white;
+  
+}
+
+tr:hover {background-color: #f5f5f5;}
+tr:nth-child(even) {background-color: yellow;}
+
+td {
+  
+  vertical-align: bottom;
+  border: 1px solid black;
+}
+
+</style>
+</head>
+<body>
+
+<div>
+    <button type="button" onclick="window.location.href='{{ url_for( 'links' ) }}';">See related links</button>
+</div>
+
+{% if trigger %}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+   </div>
+   <div class="modal-body">
+    ...
+   </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+   </div>
+  </div>
+ </div>
+</div>
+{% endif %}
+
+<h1>CSE4020  -  Machine LearningWinter Semester 2019 – 2020B.Tech. (CSE) Programme</h1>
+<h2>CSE4020  -  Machine LearningWinter Semester 2019 – 2020B.Tech. (CSE) Programme</h2>
+<br><br><br><hr><hr><br><br><br>
+<h2>5.2 Hierarchical: AGNES &  DIANA</h2>
+<br><br><br><hr><hr><br><br><br>
+<h2>Hierarchical Clustering Techniques</h2>
+<p>Hierarchical approach:</p>
+<p>Create a hierarchical decomposition of the set of data (or objects) using some criterion (distance matrix )</p>
+<p>Examples: Diana, Agnes, and ROCK.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Hierarchical Clustering</h2>
+<p>Use distance matrix as clustering criteria.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Two types of Hierarchical Clustering: Agglomerative (bottom-up) and Divisive (top-down).</p>
+<p>Agglomerative (AGNES): begin with each element as a separate cluster and merge them into successively larger clusters</p>
+<p>Divisive (DIANA): begin with the whole set and proceed to divide it into successively smaller clusters.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<br><br><br><hr><hr><br><br><br>
+<h2>AGNES (Agglomerative Nesting)</h2>
+<p>Agglomerative, Bottom-up approach</p>
+<p>Initially each item in its own cluster</p>
+<p>Iteratively clusters are merged together</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>DIANA (Divisive Analysis)</h2>
+<p>Initially all items in one cluster</p>
+<p>Large clusters are successively divided</p>
+<p>Top Down</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Comments on the Hierarchical Clustering</h2>
+<p>Weaknesses:</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Examples for Hierarchical Clustering</h2>
+<br><br><br><hr><hr><br><br><br>
+<h2>Cluster Distance Measures</h2>
+<br><br><br><hr><hr><br><br><br>
+
+<table>
+<tr>
+<td>method</td> <td>Algorithm for computing distance between clusters.</td> 
+</tr>
+<tr>
+<td>Method</td> <td>Description</td> 
+</tr>
+<tr>
+<td>'average'</td> <td> average distance (UPGMA) </td> 
+</tr>
+<tr>
+<td>'centroid'</td> <td>Centroid distance (UPGMC), appropriate for Euclidean distances only</td> 
+</tr>
+<tr>
+<td>'complete'</td> <td>Furthest distance </td> 
+</tr>
+<tr>
+<td>'median'</td> <td>Weighted center of mass distance (WPGMC), appropriate for Euclidean distances only</td> 
+</tr>
+<tr>
+<td>'single'</td> <td>Shortest distance   </td> 
+</tr>
+<tr>
+<td>'ward'</td> <td>Inner squared distance (minimum variance algorithm), appropriate for Euclidean distances only</td> 
+</tr>
+</table><br>
+<br><br><br><hr><hr><br><br><br>
+<table>
+<tr>
+<td>Inner squared distance (minimum variance algorithm), appropriate for Euclidean distances only</td> <td>a</td> <td>b</td> <td>c</td> <td>d</td> <td>e</td> 
+</tr>
+<tr>
+<td>Feature</td> <td>1</td> <td>2</td> <td>4</td> <td>5</td> <td>6</td> 
+</tr>
+<tr>
+<td>6</td> <td>a</td> <td>b</td> <td>c</td> <td>d</td> <td>e</td> 
+</tr>
+<tr>
+<td>a</td> <td>0</td> <td>1</td> <td>3</td> <td>4</td> <td>5</td> 
+</tr>
+<tr>
+<td>b</td> <td>1</td> <td>0</td> <td>2</td> <td>3</td> <td>4</td> 
+</tr>
+<tr>
+<td>c</td> <td>3</td> <td>2</td> <td>0</td> <td>1</td> <td>2</td> 
+</tr>
+<tr>
+<td>d</td> <td>4</td> <td>3</td> <td>1</td> <td>0</td> <td>1</td> 
+</tr>
+<tr>
+<td>e</td> <td>5</td> <td>4</td> <td>2</td> <td>1</td> <td>0</td> 
+</tr>
+<tr>
+<td>0</td> <td>a</td> <td>b</td> <td>c</td> <td>d</td> <td>e</td> 
+</tr>
+<tr>
+<td>Feature</td> <td>1</td> <td>2</td> <td>4</td> <td>5</td> <td>6</td> 
+</tr>
+</table><br>
+<br><br><br><hr><hr><br><br><br>
+<h2>Distance Measurements Between Data Points</h2>
+<p>This parameter specifies how the distance between data points in the clustering input is measured. The options are:</p>
+<p>Euclidean: Use the standard Euclidean (as-the-crow-flies) distance.</p>
+<p>Euclidean Squared: Use the Euclidean squared distance in cases where you would use regular Euclidean distance in Jarvis-Patrick or K-Means clustering.</p>
+<p>Manhattan: Use the Manhattan (city-block) distance.</p>
+<p>Pearson Correlation: Use the Pearson Correlation coefficient to cluster together genes or samples with similar behavior; genes or samples with opposite behavior are assigned to different clusters.</p>
+<p>Pearson Squared: Use the squared Pearson Correlation coefficient to cluster together genes with similar or opposite behaviors (i.e. genes that are highly correlated and those that are highly anti-correlated are clustered together).</p>
+<p>Chebychev: Use Chebychev distance to cluster together genes that do not show dramatic expression differences in any samples; genes with a large expression difference in at least one sample are assigned to different clusters.</p>
+<p>Spearman: Use Spearman Correlation to cluster together genes whose expression profiles have similar shapes or show similar general trends (e.g. increasing expression with time), but whose expression levels may be very different.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>This parameter specifies how the distance between data points in the clustering input is measured. The options are:</p>
+<p>Euclidean: Use the standard Euclidean (as-the-crow-flies) distance.</p>
+<p></p>
+
+<img src=image020.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Metrics for hierarchical clustering</h2>
+
+<table>
+<tr>
+<td>Metric</td> <td>Description</td> 
+</tr>
+<tr>
+<td>'</td> <td>Euclidean distance (default). </td> 
+</tr>
+<tr>
+<td>'</td> <td>.</td> 
+</tr>
+<tr>
+<td>'cityblock'</td> <td>City block metric.</td> 
+</tr>
+<tr>
+<td>'minkowski'</td> <td> is a scalar positive value of the exponent.</td> 
+</tr>
+<tr>
+<td>'chebychev'</td> <td>Chebychev distance (maximum coordinate difference).</td> 
+</tr>
+<tr>
+<td>'mahalanobis'</td> <td> is symmetric and positive definite.</td> 
+</tr>
+<tr>
+<td>'cosine'</td> <td>One minus the cosine of the included angle between points (treated as vectors).</td> 
+</tr>
+<tr>
+<td>'correlation'</td> <td>One minus the sample correlation between points (treated as sequences of values).</td> 
+</tr>
+<tr>
+<td>'spearman'</td> <td>One minus the sample Spearman's rank correlation between observations (treated as sequences of values).</td> 
+</tr>
+<tr>
+<td>'hamming'</td> <td>Hamming distance, which is the percentage of coordinates that differ.</td> 
+</tr>
+<tr>
+<td>'jaccard'</td> <td>One minus the Jaccard coefficient, which is the percentage of nonzero coordinates that differ.</td> 
+</tr>
+<tr>
+<td>custom distance function</td> <td>.</td> 
+</tr>
+</table><br>
+<br><br><br><hr><hr><br><br><br>
+<h2>Agglomerative Algorithm</h2>
+<img src=image037.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Problem: clustering analysis with agglomerative algorithm</p>
+<p></p>
+
+<img src=image044.png alt="Cannot Load image"><br><br>
+<img src=image045.png alt="Cannot Load image"><br><br>
+<img src=image046.jpg alt="Cannot Load image"><br><br>
+<img src=image047.png alt="Cannot Load image"><br><br>
+<img src=image048.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Merge two closest clusters (iteration 1)</p>
+<p></p>
+
+<img src=image099.png alt="Cannot Load image"><br><br>
+<img src=image100.png alt="Cannot Load image"><br><br>
+<img src=image101.jpg alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Update distance matrix (iteration 1)</p>
+<p></p>
+
+<img src=image135.png alt="Cannot Load image"><br><br>
+<img src=image136.png alt="Cannot Load image"><br><br>
+<img src=image137.png alt="Cannot Load image"><br><br>
+<img src=image138.png alt="Cannot Load image"><br><br>
+<img src=image139.jpg alt="Cannot Load image"><br><br>
+<img src=image140.jpg alt="Cannot Load image"><br><br>
+<img src=image141.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Merge two closest clusters/update distance matrix (iteration 3)</p>
+<p></p>
+
+<img src=image414.png alt="Cannot Load image"><br><br>
+<img src=image415.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Final result (meeting termination condition)</p>
+<p></p>
+
+<img src=image576.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Dendrogram tree representation</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h1>Foundations of AI</h1>
+<h2>Foundations of AI</h2>
+<p>Reference:</p>
+<p>Russell, S. J., and Norvig, P. (2016). Artificial intelligence: a modern approach. Malaysia; Pearson Education Limited,.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>AI　Foundations?</p>
+<p>AI</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>PhilosophyLogic, methods of reasoning, mind as physical  system, foundations of learning, language,rationality.</p>
+<p>MathematicsFormal representation and proof, algorithms,computation, (un)decidability, (in)tractability,probability.</p>
+<p>Economicsutility, decision theory, rational economic agents</p>
+<p>Neuroscienceneurons as information processing units.</p>
+<p>Psychology/       how do people behave, perceive, process Cognitive Scienceinformation,  represent knowledge.</p>
+<p>Computer building fast computers engineering</p>
+<p>Control theorydesign systems that maximize an objectivefunction over time</p>
+<p>Linguisticsknowledge representation, grammar</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Mathematics</p>
+<p>What are the formal rules to draw valid conclusions?</p>
+<p>What can be computed?</p>
+<p>How do we reason with uncertain information?</p>
+<p>Philosophers staked out some of the fundamental ideas of AI.</p>
+<p>Formal science required a level of mathematical formalization in three fundamental areas: logic, computation and probability.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>1 - Philosophy</h2>
+<p>At that time, the study of human intelligence began with no formal expression</p>
+<p>Initiate the idea of mind as a machine and its internal operations</p>
+<p>Need to answer…</p>
+<p>Can formal rules be used to draw valid conclusions?</p>
+<p>How does the mind arise from a physical brain?</p>
+<p>Where does knowledge come from?</p>
+<p>How does knowledge lead to action?</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Aristotle (384–322 B.C.):</p>
+<p>First to formulate a precise set of laws governing the rational part of the mind.</p>
+<p>Developed an informal system of syllogisms for proper reasoning, which in principle allowed one to generate conclusions mechanically, given initial premises.</p>
+<p>Ramon Lull (d. 1315):</p>
+<p>Useful reasoning could actually be carried out by a mechanical artifact.</p>
+<p>Thomas Hobbes (1588–1679):</p>
+<p>Proposed reasoning for numerical computation like “we add and subtract in our silent thoughts.”</p>
+<p>Automation of computation was already well under way.</p>
+<p>Leonardo da Vinci (1452–1519):</p>
+<p>Designed but did not build a mechanical calculator</p>
+<p>recent reconstructions have shown the design to be functional.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>German scientist Wilhelm Schickard (1592–1635):</p>
+<p>Constructed first known calculating machine</p>
+<p>Blaise Pascal (1623–1662):</p>
+<p>more famous, “the arithmetical machine produces effects which appear nearer to thought than all the actions of animals.”</p>
+<p>Gottfried Wilhelm Leibniz (1646–1716):</p>
+<p>Built a mechanical device intended to carry out operations on concepts rather than numbers.</p>
+<p>surpassed Pascal by building a calculator.</p>
+<p>Could add, subtract, multiply, and take roots, whereas the Pascaline could only add and subtract.</p>
+<p>Some speculated that machines might not just do calculations but actually be able to think and act on their own.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Thomas Hobbes suggested the idea of an “artificial animal,” arguing “For what is the heart but a spring; and the nerves, but so many strings; and the joints, but so many wheels.”</p>
+<p>Mind operates according to logical rules, and to build physical systems that emulate some of those rules; So mind itself is such a physical system.</p>
+<p>Rene Descartes (1596–1650):</p>
+<p>Gave the first clear discussion of the distinction between mind and matter and of the problems that arise.</p>
+<p>One problem with a purely physical conception of the mind:</p>
+<p>if the mind is governed entirely by physical laws, then it has no more free will than a rock “deciding” to fall toward the center of the earth.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Rene Descartes (1596–1650): Descartes was a strong believer of the power of reasoning in understanding RATIONALISM the world, a philosophy now called rationalism.</p>
+<p>Dualism:</p>
+<p>Descartes was also a proponent of dualism.</p>
+<p>There is a part of the human mind that is outside of nature, exempt from physical laws.</p>
+<p>Animals did not possess this dual quality;</p>
+<p>They could be treated as machines.</p>
+<p>Materialism:</p>
+<p>An alternative to dualism, holds that the brain’s operation according to the laws of physics constitutes the mind.</p>
+<p>Free will is simply the way that the perception of available choices appears to the choosing entity.</p>
+<p>Given a physical mind that manipulates knowledge, the next problem is to establish  the source of knowledge.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Empiricism movement- Francis Bacon’s (1561–1626) Novum Organum,  is characterized by a dictum of John Locke (1632–1704): “Nothing is in the understanding, which was not first in the senses.”</p>
+<p>David Hume’s (1711–1776): proposed principle of induction: that general rules are acquired by exposure to repeated associations between their elements.</p>
+<p>Building on the work of Ludwig Wittgenstein (1889–1951) and Bertrand Russell (1872–1970), the famous Vienna Circle, led by Rudolf Carnap (1891–1970), developed the doctrine of logical positivism.</p>
+<p>This doctrine holds that all knowledge can be characterized by  logical theories connected, ultimately, to observation sentences that correspond to sensor inputs; thus logical positivism combines rationalism and empiricism.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Confirmation theory of Carnap and Carl Hempel (1905–1997) attempted to analyze the acquisition of knowledge  from experience.</p>
+<p>Carnap’s book The Logical Structure of the World (1928) defined an explicit computational procedure for extracting knowledge from elementary experiences.</p>
+<p>It was probably the first theory of mind as a computational process.</p>
+<p>The final element in the philosophical picture of the mind is the connection between knowledge and action.</p>
+<p>This question is vital to AI because intelligence requires action as well as reasoning.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Aristotle argued (in De Motu Animalium) that actions are justified by a logical connection between goals and knowledge of the action’s outcome:</p>
+<p>But how does it happen that thinking is sometimes accompanied by action and sometimes not, sometimes by motion, and sometimes not? It looks as if almost the same thing happens as in the case of reasoning and making inferences about unchanging objects.  But in that case the end is a speculative proposition . . . whereas here the conclusion which results from the two premises is an action. . . . I need covering; a cloak is a covering.  I need a cloak. What I need, I have to make; I need a cloak. I have to make a cloak. And the conclusion, the “I have to make a cloak,” is an action.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>In the Nicomachean Ethics, Aristotle further elaborates on this topic, suggesting an algorithm:</p>
+<p>We deliberate not about ends, but about means. For a doctor does not deliberate whether he shall heal, nor an orator whether he shall persuade, . . . They assume the end and consider how and by what means it is attained, and if it seems easily and best produced thereby; while if it is achieved by one means only they consider how it will be achieved by this and by what means this will be achieved, till they come to the first cause, . . . and what is last in the order of analysis seems to be first in the order of becoming. And if we come on an impossibility, we give up the search, e.g., if we need money and this cannot be got; but if a thing appears possible we try to do it.</p>
+<p>Aristotle’s algorithm was implemented 2300 years later by Newell and Simon in their GPS program.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>2 - Mathematics</h2>
+<p>Formal logic:</p>
+<p>Traced back to the philosophers of ancient Greece, but its mathematical development really began with the work of Georgeo Boole.</p>
+<p>George Boole (1815–1864): Details of propositional, or Boolean, logic (Boole, 1847).</p>
+<p>Gottlob Frege (1848–1925): Extended Boole’s logic to include objects and relations, creating the first order logic used today.</p>
+<p>Alfred Tarski (1902–1983): Introduced a theory of reference showing the relation between the objects in a logic to the real world.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>To determine the limits of what could be done with logic and computation.</p>
+<p>First nontrivial algorithm is Euclid’s algorithm for computing greatest common divisors.</p>
+<p>The word algorithm comes from al-Khowarazmi, a Persian mathematician, whose writings also introduced Arabic numerals and algebra to Europe.</p>
+<p>Boole and others discussed algorithms for logical deduction, efforts were under way to formalize general mathematical reasoning as logical deduction.</p>
+<p>Kurt Godel (1906–1978):</p>
+<p>There exists an effective procedure to prove any true statement in the first-order logic.</p>
+<p>First-order logic could not capture the principle of mathematical induction needed to characterize the natural numbers.</p>
+<p>Limits on deduction do exist, there are true statements that are undecidable in the sense that they have no proof within the theory.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Fundamental result can be interpreted as showing that some functions on the integers cannot be represented by an algorithm— they cannot be computed.</p>
+<p>Motivated Alan Turing (1912–1954): Characterized exactly which functions are computable—capable of being computed.</p>
+<p>Church–Turing thesis, states that TM is capable of computing any computable function, is generally accepted as providing a sufficient definition.</p>
+<p>Turing also showed that there were some functions that no Turing machine can compute.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Decidability and computability are important to an understanding of computation, the notion of tractability had a greater impact.</p>
+<p>A problem is called intractable if the time required to solve instances of the problem grows exponentially with the size of the instances.</p>
+<p>Distinction between polynomial and exponential growth in complexity was first emphasized in the mid-1960s.</p>
+<p>Exponential growth means large instances cannot be solved in any reasonable time.</p>
+<p>Strive to divide the overall problem of generating intelligent behavior into tractable subproblems rather than intractable ones.</p>
+<p>To recognize an intractable problem - Theory of NP-completeness, pioneered by Steven Cook (1971) and Richard Karp (1972).</p>
+<p>Cook and Karp showed the existence of large classes of canonical combinatorial search and reasoning problems that are NP-complete.</p>
+<p>Any problem class to which the class of NP-complete problems can be reduced is likely to be intractable.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Third great contribution of mathematics to AI is the theory of probability.</p>
+<p>Italian Gerolamo Cardano (1501–1576): Framed the idea of probability, describing it in terms of the possible outcomes of gambling events.</p>
+<p>Blaise Pascal (1623–1662): In a letter to Pierre Fermat (1601–1665), showed how to predict the future of an unfinished gambling game and assign average payoffs to the gamblers.</p>
+<p>Probability quickly became an invaluable part of all the quantitative sciences, helping to deal with uncertain measurements and incomplete theories.</p>
+<p>James Bernoulli (1654–1705), Pierre Laplace (1749–1827), and others advanced the theory and introduced new statistical methods.</p>
+<p>Thomas Bayes (1702–1761), proposed a rule for updating probabilities in the light of new evidence.</p>
+<p>Bayes’ rule underlies most modern approaches to uncertain reasoning in AI systems.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Mathematics formalizes the three main area of AI: computation, logic, and probability</p>
+<p>complexity theory - Computation leads to analysis of the problems that can be computed</p>
+<p>Probability contributes the “degree of belief” to handle uncertainty in AI</p>
+<p>Decision theory combines probability theory and utility theory.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>The Foundation of AI</h2>
+<p>Economics</p>
+<p>How should we make decisions so as to maximize payoff?</p>
+<p>How should we do this when others may not go along?</p>
+<p>How should we do this when the payoff may be far in the future?</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Neuroscience</p>
+<p>How do brains process information?</p>
+<p>Neuroscience is the study of the nervous system, particularly the brain.</p>
+<p>Human brains are different;</p>
+<p>In 335 B.C. Aristotle wrote, “Of all the animals, man has the largest brain in proportion to his size.”</p>
+<p>Paul Broca’s (1824–1880):</p>
+<p>Study of aphasia (speech deficit) in brain-damaged patients demonstrated the existence of localized areas of the brain responsible for specific cognitive functions.</p>
+<p>Speech production was localized to the portion of the left hemisphere now called Broca’s area.</p>
+<p>Known that the brain consisted of nerve cells, or neurons,</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Psychology</p>
+<p>How do humans think and act?</p>
+<p>Study of human reasoning and acting</p>
+<p>Provides reasoning models for AI</p>
+<p>Strengthen the ideas</p>
+<p>humans and other animals can be considered as information processing machines</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Computer Engineering</p>
+<p>How to build an efficient computer?</p>
+<p>Provides the artifact that makes AI application possible</p>
+<p>Power of computer makes computation of large and difficult problems more easily</p>
+<p>AI has also contributed its own work to computer science, including: time-sharing, the linked list data type, OOP, etc.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Computer engineering</p>
+<p>How can we build an efficient computer?</p>
+<p>For artificial intelligence to succeed, we need two things: intelligence and an artifact.</p>
+<p>Computer has been the artifact of choice.</p>
+<p>Modern digital electronic computer was invented independently and simultaneously by scientists in three countries embattled in World War II.</p>
+<p>First operational computer was the electromechanical Heath Robinson, built in 1940 by Alan Turing’s team for a single purpose: deciphering German messages.</p>
+<p>In 1943, the same group developed the Colossus, a powerful general-purpose machine based on vacuum tubes.</p>
+<p>First operational programmable computer was the Z-3, the invention of Konrad Zuse in Germany in 1941.</p>
+<p>Zuse also invented floating-point numbers and the first high-level.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Control theory and Cybernetics</p>
+<p>How can artifacts operate under their own control?</p>
+<p>Artifacts adjust their actions</p>
+<p>To do better for the environment over time</p>
+<p>Based on an objective function and feedback from the environment</p>
+<p>Not limited only to linear systems but also other problems</p>
+<p>as language, vision, and planning, etc.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<br><br><br><hr><hr><br><br><br>
+<p>Linguistics</p>
+<p>For understanding natural languages</p>
+<p>different approaches has been adopted from the linguistic work</p>
+<p>Formal languages</p>
+<p>Syntactic and semantic analysis</p>
+<p>Knowledge representation</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>3 - Economics</h2>
+<p>Science of economics is kick started in 1776 by Scottish philosopher Adam Smith (1723–1790).</p>
+<p>Ancient Greeks and others made contributions to economic thought,</p>
+<p>Smith was the first to treat it as a science, using the idea that economies can be thought of as consisting of individual agents maximizing their own economic well-being.</p>
+<p>Most people think of economics as being about money, but economists will say that they are really studying how people make choices that lead to preferred outcomes.</p>
+<p>L´eon Walras (1834-1910): “preferred outcomes” or utility was first formalized</p>
+<p>Improved by Frank Ramsey (1931) and later by John von Neumann and Oskar Morgenstern…. in their book  The Theory of Games and Economic Behavior (1944).</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Decision theory, which combines probability theory with utility theory, provides a formal and complete framework for decisions made under uncertainty - in cases where probabilistic descriptions appropriately capture the decision maker’s environment.</p>
+<p>Suitable for “large” economies where each agent need pay no attention to the actions of other agents as individuals.</p>
+<p>For “small” economies, the situation is much more like a game: the actions of one player can significantly affect the utility of another.</p>
+<p>Von Neumann and Morgenstern’s development of game theory included the surprising result that, for some games, a rational agent should adopt policies that are randomized.</p>
+<p>Unlike decision theory, game theory does not offer an unambiguous prescription for selecting actions.</p>
+<p>Economists did not address - how to make rational decisions when payoffs from actions are not immediate but instead result from several actions taken in sequence.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Field of operations research, emerged in World War II OPERATIONS from efforts in Britain to optimize radar installations, and later found civilian applications in complex management decisions.</p>
+<p>Richard Bellman (1957): Formalized a class of sequential decision problems called Markov decision processes.</p>
+<p>Economics and operations research has contributed much to rational agents.</p>
+<p>Herbert Simon (1916–2001): Won the Nobel Prize in economics in 1978 for modeling work based on satisficing</p>
+<p>Satisficing: Making decisions that are “good enough,” rather than laboriously calculating an optimal decision—gave a better description of actual human behavior (Simon, 1947).</p>
+<p>Wellman (1995): Said a resurgence of interest in decision-theoretic techniques for agent systems.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>4 - Neuroscience</h2>
+<p>Camillo Golgi (1843–1926): developed a staining technique allowing the observation of individual neurons in the brain.</p>
+<p>Nicolas Rashevsky (1936, 1938): First to apply mathematical models to the study of the nervous system.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Mapping between areas of the brain and the parts of the body exists and they control or from which they receive sensory input.</p>
+<p>Such mappings are able to change radically over the course of a few weeks, and some animals seem to have multiple maps.</p>
+<p>(Han and Boyden, 2007): Individual neurons can be stimulated electrically, chemically, or even optically allowing neuronal input–output relationships to be mapped.</p>
+<p>But a long way to go for understanding how cognitive processes actually work.</p>
+<p>Conclusion: Collection of simple cells can lead to thought, action, and consciousness, John Searle (1992), brains cause minds.</p>
+<p>Real alternative theory is mysticism: Mind operate in some mystical realm that is beyond physical science.</p>
+<p>Brains and digital computers have somewhat different properties.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Computers have a cycle time that is a million times faster than a brain.</p>
+<p>Brain makes up for that with far more storage and interconnection than even a high-end personal computer, although the largest supercomputers have a capacity that is similar to the brain’s.</p>
+<p>Singularity: Computers reach a superhuman level of performance (Vinge, 1993; Kurzweil, 2005), but the raw comparisons are not especially informative.</p>
+<p>Even with a computer of virtually unlimited capacity, we still would not know how to achieve the brain’s level of intelligence.</p>
+<p></p>
+
+<img src=image629.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Structure of a Biological Neuron</h2>
+<img src=image585.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>An Artificial Neuron</h2>
+<img src=image590.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>5 - Psychology</h2>
+<p>Origin of scientific psychology are usually traced to the work of the German physicist Hermann von Helmholtz (1821–1894) and his student Wilhelm Wundt (1832–1920).</p>
+<p>Helmholtz applied the scientific method to the study of human vision.</p>
+<p>Wundt (1879): Opened the first laboratory of experimental psychology, at the University of Leipzig.</p>
+<p>Wundt insisted on carefully controlled experiments in which his workers would perform a perceptual or associative task while introspecting on their thought processes.</p>
+<p>The careful controls went a long way toward making psychology a science, but the subjective nature of the data made it unlikely that an experimenter would ever disconfirm his or her own theories.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Biologists studying animal behavior, lacked introspective data and developed an objective methodology.</p>
+<p>H. S. Jennings (1906): Influences work Behavior of the Lower Organisms.</p>
+<p>John Watson (1878–1958): Behaviorism movement, rejected any theory involving mental processes on the grounds that introspection could not provide reliable evidence.</p>
+<p>Behaviorists insisted on studying only objective measures of the percepts (or stimulus) given to an animal and its resulting actions (or response).</p>
+<p>Behaviorism discovered a lot about rats and pigeons but had less success at understanding humans.</p>
+<p>Cognitive psychology, views the brain as an information-processing device, can be traced back at least to the works of William James (1842–1910).</p>
+<p>Helmholtz also insisted that perception involved a form of unconscious logical inference.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Craik specified the three key steps of a knowledge-based agent:</p>
+<p>the stimulus must be translated into an internal representation,</p>
+<p>the representation is manipulated by cognitive processes to derive new internal representations, and</p>
+<p>these are in turn retranslated back into action.</p>
+<p>Good design for an agent:</p>
+<p>If the organism carries a “small-scale model” of external reality and of its own possible actions within its head, it is able to try out various alternatives, conclude which is the best of them, react to future situations before they arise, utilize the knowledge of past events in dealing with the present and future, and in every way to react in a much fuller, safer, and more competent manner to the emergencies which face it. (Craik, 1943)</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Donald Broadbent (1958) -  Perception and Communication was one of the first works to model psychological phenomena as information processing.</p>
+<p>Development of computer modeling led to the creation of the field of cognitive science.</p>
+<p>The field can be said to have started at a workshop in September 1956 at MIT.</p>
+<p>At the workshop, George Miller presented The Magic Number Seven, Noam Chomsky presented Three Models of Language, and Allen Newell and Herbert Simon presented The Logic Theory Machine.</p>
+<p>These three influential papers showed how computer models could be used to address the psychology of memory, language, and logical thinking, respectively.</p>
+<p>Anderson (1980) “a cognitive theory should be like a computer program” - describe a detailed information processing mechanism whereby some cognitive function might be implemented.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>6 - Computer engineering</h2>
+<p>First electronic computer, the ABC, was assembled by John Atanasoff and his student Clifford Berry between 1940 and 1942 at Iowa State University.</p>
+<p>Atanasoff’s research received little support or recognition; it was the ENIAC, developed as part of a secret military project at the University of Pennsylvania by a team including John Mauchly and John Eckert, that proved to be the most influential forerunner of modern computers.</p>
+<p>Since that time, each generation of computer hardware has brought an increase in speed and capacity and a decrease in price.</p>
+<p>Performance doubled every 18 months or so until around 2005, when power dissipation problems led manufacturers to start multiplying the number of CPU cores rather than the clock speed.</p>
+<p>Current expectations are that future increases in power will come from massive parallelism—a curious convergence with the properties of the brain.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Joseph Marie Jacquard (1752–1834): First programmable machine was a loom, devised in 1805, that used punched cards to store instructions for the pattern to be woven.</p>
+<p>Charles Babbage (1792–1871): designed two machines, neither of which he completed.</p>
+<p>Difference Engine was intended to compute mathematical tables for engineering and scientific projects.</p>
+<p>It was finally built and shown to work in 1991 at the Science Museum in London (Swade, 2000).</p>
+<p>Babbage’s Analytical Engine was far more ambitious: it included addressable memory, stored programs, and conditional jumps and was the first artifact capable of universal computation.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Babbage’s colleague Ada Lovelace, daughter of the poet Lord Byron, was perhaps the world’s first programmer.</p>
+<p>She wrote programs for the unfinished Analytical Engine and even speculated that the machine could play chess or compose music.</p>
+<p>AI also owes a debt to the software side of computer science, which has supplied the operating systems, programming languages, and tools needed to write modern programs.</p>
+<p>Work in AI has pioneered many ideas that have made their way back to mainstream computer science, including time sharing, interactive interpreters, personal computers with windows and mice, rapid development environments, the linked list data type, automatic storage management, and key concepts of symbolic, functional, declarative, and object-oriented programming.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>7 - Control theory and Cybernetics</h2>
+<p>Control theory and cybernetics</p>
+<p>How can artifacts operate under their own control?</p>
+<p>Ktesibios of Alexandria (c. 250 B.C.) built the first self-controlling machine: a water clock with a regulator that maintained a constant flow rate.</p>
+<p>This invention changed the definition of what an artifact could do.</p>
+<p>Previously, only living things could modify their behavior in response to changes in the environment.</p>
+<p>Other examples of self-regulating feedback control systems include the steam engine governor, created by James Watt (1736–1819), and the thermostat, invented by Cornelis Drebbel (1572–1633), who also invented the submarine.</p>
+<p>The mathematical theory of stable feedback systems was developed in the 19th century.</p>
+<p>The central figure in the creation of what is now called control theory was Norbert Wiener (1894–1964).</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Wiener was a brilliant mathematician who worked with Bertrand Russell, among others, before developing an interest in biological and mechanical control systems and their connection to cognition.</p>
+<p>Like Craik (who also used control systems as psychological models), Wiener and his colleagues Arturo Rosenblueth and Julian Bigelow challenged the behaviorist orthodoxy (Rosenblueth et al., 1943).</p>
+<p>They viewed purposive behavior as arising from a regulatory mechanism trying to minimize “error”—the difference between current state and goal state.</p>
+<p>In the late 1940s, Wiener, along with Warren McCulloch, Walter Pitts, and John von Neumann, organized a series of influential conferences that explored the new mathematical and computational models of cognition.</p>
+<p>Wiener’s book Cybernetics (1948) became a bestseller and awoke the public to the possibility of artificially intelligent machines.</p>
+<p>Meanwhile, in Britain, W. Ross Ashby (Ashby, 1940) pioneered similar ideas.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Ashby, Alan Turing, Grey Walter, and others formed the Ratio Club for “those who had Wiener’s ideas before Wiener’s book appeared.”</p>
+<p>Ashby’s Design for a Brain (1948, 1952) elaborated on his idea that intelligence could be created by the use of homeostatic devices containing appropriate feedback loops to achieve stable adaptive behavior.</p>
+<p>Modern control theory, especially the branch known as stochastic optimal control, has as its goal the design of systems that maximize an objective function over time.</p>
+<p>This roughly matches our view of AI: designing systems that behave optimally.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Why, then, are AI and control theory two different fields, despite the close connections among their founders?</p>
+<p>The answer lies in the close coupling between the mathematical techniques that were familiar to the participants and the corresponding sets of problems that were encompassed in each world view.</p>
+<p>Calculus and matrix algebra, the tools of control theory, lend themselves to systems that are describable by fixed sets of continuous variables, whereas AI was founded in part as a way to escape from the these perceived limitations.</p>
+<p>The tools of logical inference and computation allowed AI researchers to consider problems such as language, vision, and planning that fell completely outside the control theorist’s purview.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>8 - Linguistics</h2>
+<p>How does language relate to thought?</p>
+<p>In 1957, B. F. Skinner published Verbal Behavior, was a comprehensive, detailed account of the behaviorist approach to language learning, written by the foremost expert in the field.</p>
+<p>The author of the review was the linguist Noam Chomsky, who had just published a book on his own theory, Syntactic Structures.</p>
+<p>Chomsky pointed out that the behaviorist theory did not address the notion of creativity in language—it did not explain how a child could understand and make up sentences that he or she had never heard before.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<p>Modern linguistics and AI, then, were “born” at about the same time, and grew up together, intersecting in a hybrid field called computational linguistics or natural language processing.</p>
+<p>The problem of understanding language soon turned out to be considerably more complex than it seemed in 1957.</p>
+<p>Understanding language requires an understanding of the subject matter and context, not just an understanding of the structure of sentences.</p>
+<p>Knowledge representation - Study of how to put knowledge into a form that a computer can reason with</p>
+<p>It was tied to language and informed by research in linguistics, which was connected in turn to decades of work on the philosophical analysis of language.</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Agent</h2>
+<p>CMU</p>
+<p></p>
+
+<img src=image632.png alt="Cannot Load image"><br><br>
+<img src=image633.png alt="Cannot Load image"><br><br>
+<img src=image634.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>CMUAIBO entertainment ROBO</p>
+<p>Contd..</p>
+<p>Expert systems like the Cardiologist is an agent.</p>
+<p>Autonomous spacecrafts.</p>
+<p>Intelligent buildings</p>
+<p>12/11/2019</p>
+<p>Artificial Intelligence</p>
+<p></p>
+
+<img src=image689.png alt="Cannot Load image"><br><br>
+<img src=image690.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Agent Program and Agent Function</h2>
+<p>Percept-perceptual inputs</p>
+<p></p>
+
+<img src=image717.jpg alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Vacuum-cleaner world</h2>
+<p>Percepts: location and contents, e.g., [A,Dirty]</p>
+<p>Actions: Left, Right, Suck, NoOp</p>
+<p></p>
+
+<img src=image723.png alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Agent Program-Eg</h2>
+<p>Function REFLEX-VACCUM-AGENT([location,status])return as an action</p>
+<p>If status=Dirty then return Suck</p>
+<p>Else if location=A then return Right</p>
+<p>Else if  location=B then return Left</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>GOOD BEHAVIOUR</h2>
+<p>Rational agent-One does the right thing</p>
+<p>Performance measures- criterion for success of an agent's behaviour</p>
+<p>Task environments-Problems and Solutions</p>
+<p>Specifying the task environment</p>
+<p>The rationality of the simple vacuum-cleaner agent, needs specification of</p>
+<p>the performance measure</p>
+<p>the environment</p>
+<p>the agent's actuators and</p>
+<p>sensors</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>PEAS</h2>
+<br><br><br><hr><hr><br><br><br>
+<p>Performance measure -  safety, destination, prots, legality, comfort</p>
+<p>Environment - streets/freeways, trac, pedestrians, weather</p>
+<p>Actuators - steering, accelerator, brake, horn, speaker/display</p>
+<p>Sensors - video, accelerometers, gauges, engine sensors, keyboard, GPS</p>
+<p></p>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>Examples</h2>
+<table>
+<tr>
+<td>Agent Type</td> <td>Performance Measure</td> <td>Environments</td> <td>Actuators</td> <td>Sensors</td> 
+</tr>
+<tr>
+<td>Taxi driver</td> <td>maximize profits</td> <td>Customers</td> <td>Signal, horn, display</td> <td>accelerometer</td> 
+</tr>
+</table><br>
+<br><br><br><hr><hr><br><br><br>
+<h2>Properties</h2>
+<p>Fully observable vs Partially Observable</p>
+<p>Determinstic  vs  Stochastic</p>
+<p>Episodic vs Sequential</p>
+<p>Static vs Dynamic</p>
+<p>Discrete vs Continuous</p>
+<p>Single agent vs Multi agent</p>
+<p></p>
+
+<img src=image729.jpg alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>17/06/15</p>
+<p>Contd..</p>
+<p>12/11/2019</p>
+<p>Artificial Intelligence</p>
+<p></p>
+
+<img src=image735.png alt="Cannot Load image"><br><br>
+<img src=image736.jpg alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<h2>AI Do Today?</h2>
+<p>In language and speech processing:</p>
+<p>In robotics:</p>
+<p></p>
+
+<img src=image757.jpg alt="Cannot Load image"><br><br>
+<img src=image758.jpg alt="Cannot Load image"><br><br>
+<img src=image759.jpg alt="Cannot Load image"><br><br>
+<img src=image760.jpg alt="Cannot Load image"><br><br>
+<img src=image761.jpg alt="Cannot Load image"><br><br>
+<img src=image762.jpg alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<p>PUFF:</p>
+<p>Medical system for diagnosis of respiratory conditions</p>
+<p>PROSPECTOR:</p>
+<p>Used by geologists to identify sites for drilling or mining</p>
+<p></p>
+
+<img src=image853.jpg alt="Cannot Load image"><br><br>
+
+<br><br><br><hr><hr><br><br><br>
+<br><br><br><hr><hr><br><br><br>
+
+</body></html>
