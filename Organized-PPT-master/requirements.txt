@@ -50,7 +50,7 @@ matplotlib==3.2.1
 msgpack==1.0.0
 murmurhash==1.0.2
 networkx==2.4
-nltk==3.4.3
+nltk==3.4.5
 np-utils==0.5.10.0
 numexpr==2.7.0
 numpy==1.16.4
