@@ -79,7 +79,7 @@ pyflakes==2.1.1
 Pygments==2.6.1
 PyMuPDF==1.16.13
 pyparsing==2.4.6
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyrsistent==0.16.0
 pytextrank==2.0.1
 python-dateutil==2.8.1
